@@ -1,0 +1,238 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ------------------------------------------------------------------ *
+ * Design tokens — light is the base, dark redefines the same roles.
+ * ------------------------------------------------------------------ */
+:root {
+  color-scheme: light;
+
+  --plane: #f4f2ef;
+  --surface: #ffffff;
+  --surface-2: #faf9f7;
+  --surface-3: #f0ede9;
+  --line: #e4e0da;
+  --line-strong: #d3cdc5;
+
+  --ink: #17130f;
+  --ink-2: #52514e;
+  --ink-muted: #8a857e;
+
+  --brand: #a32520;
+  --brand-hover: #8a1d19;
+  --brand-soft: #fbeceb;
+  --brand-ink: #8a1d19;
+
+  --good: #0ca30c;
+  --warning: #fab219;
+  --serious: #ec835a;
+  --critical: #d03b3b;
+  --good-soft: #e8f6e8;
+  --warning-soft: #fdf3dd;
+  --critical-soft: #fbe9e9;
+  --info-soft: #e8f1fc;
+
+  --grid: #e1e0d9;
+  --axis: #c3c2b7;
+
+  --s1: #2a78d6;
+  --s2: #eb6834;
+  --s3: #1baf7a;
+  --s4: #eda100;
+  --s5: #e87ba4;
+  --s6: #008300;
+  --s7: #4a3aa7;
+  --s8: #e34948;
+
+  --ring: rgba(23, 19, 15, 0.1);
+  --shadow-sm: 0 1px 2px rgba(23, 19, 15, 0.05);
+  --shadow-md: 0 4px 16px -4px rgba(23, 19, 15, 0.1), 0 1px 3px rgba(23, 19, 15, 0.04);
+  --shadow-lg: 0 18px 48px -12px rgba(23, 19, 15, 0.22);
+}
+
+.dark {
+  color-scheme: dark;
+
+  --plane: #0e0d0c;
+  --surface: #1a1816;
+  --surface-2: #201d1a;
+  --surface-3: #282421;
+  --line: #322d28;
+  --line-strong: #433c35;
+
+  --ink: #f7f5f2;
+  --ink-2: #c3c2b7;
+  --ink-muted: #948e86;
+
+  --brand: #e0574d;
+  --brand-hover: #ef6d63;
+  --brand-soft: #2e1614;
+  --brand-ink: #f0857d;
+
+  --good: #0ca30c;
+  --warning: #fab219;
+  --serious: #ec835a;
+  --critical: #d03b3b;
+  --good-soft: #12240f;
+  --warning-soft: #2a2107;
+  --critical-soft: #2c1312;
+  --info-soft: #10203a;
+
+  --grid: #2c2c2a;
+  --axis: #383835;
+
+  --s1: #3987e5;
+  --s2: #d95926;
+  --s3: #199e70;
+  --s4: #c98500;
+  --s5: #d55181;
+  --s6: #008300;
+  --s7: #9085e9;
+  --s8: #e66767;
+
+  --ring: rgba(255, 255, 255, 0.1);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 16px -4px rgba(0, 0, 0, 0.55), 0 1px 3px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 18px 48px -12px rgba(0, 0, 0, 0.7);
+}
+
+@theme inline {
+  --color-plane: var(--plane);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-surface-3: var(--surface-3);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-muted: var(--ink-muted);
+
+  --color-brand: var(--brand);
+  --color-brand-hover: var(--brand-hover);
+  --color-brand-soft: var(--brand-soft);
+  --color-brand-ink: var(--brand-ink);
+
+  --color-good: var(--good);
+  --color-warning: var(--warning);
+  --color-serious: var(--serious);
+  --color-critical: var(--critical);
+  --color-good-soft: var(--good-soft);
+  --color-warning-soft: var(--warning-soft);
+  --color-critical-soft: var(--critical-soft);
+  --color-info-soft: var(--info-soft);
+
+  --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+* {
+  border-color: var(--line);
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background: var(--plane);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--brand);
+  color: #fff;
+}
+
+/* Scrollbars */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--line-strong) transparent;
+}
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+*::-webkit-scrollbar-thumb {
+  background: var(--line-strong);
+  border-radius: 8px;
+  border: 3px solid transparent;
+  background-clip: content-box;
+}
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Focus ring */
+:where(button, a, input, select, textarea, [tabindex]):focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* Recharts tweaks */
+.recharts-cartesian-axis-tick text {
+  fill: var(--ink-muted);
+  font-size: 11px;
+}
+.recharts-cartesian-grid line {
+  stroke: var(--grid);
+}
+.recharts-surface:focus {
+  outline: none;
+}
+.recharts-sector:focus,
+.recharts-rectangle:focus {
+  outline: none;
+}
+
+@keyframes hpm-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.animate-fade-up {
+  animation: hpm-fade-up 0.28s ease-out both;
+}
+
+@keyframes hpm-pop {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.animate-pop {
+  animation: hpm-pop 0.18s ease-out both;
+}
+
+.tabnum {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ----------------------------- print ------------------------------- */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  body {
+    background: #fff;
+  }
+  .print-block {
+    break-inside: avoid;
+  }
+  main {
+    padding: 0 !important;
+  }
+}
